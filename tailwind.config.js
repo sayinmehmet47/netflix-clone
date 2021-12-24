@@ -4,7 +4,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: (theme) => ({
+        netflix: "url('../public/images/netflixBG.jpg')",
+      }),
+    },
+  },
+  variants: {
+    extend: {
+      backgroundImage: ["dark"],
+    },
   },
   plugins: [],
 };
