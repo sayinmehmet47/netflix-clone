@@ -18,3 +18,22 @@ a {
 * {
   box-sizing: border-box;
 }
+.tab {
+  overflow: hidden;
+}
+.tab-content {
+  max-height: 0;
+  transition: all 0.1s;
+}
+input:checked + .tab-label .test {
+}
+input:checked + .tab-label .test svg {
+  transform: rotate(180deg);
+  stroke: rgb(221, 129, 129);
+}
+input:checked + .tab-label::after {
+  transform: rotate(90deg);
+}
+input:checked ~ .tab-content {
+  max-height: 100vh;
+}

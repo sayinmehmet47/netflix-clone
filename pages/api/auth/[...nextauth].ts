@@ -14,17 +14,44 @@ export default authHandler;
 
 const options = {
   providers: [
-    EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+    // EmailProvider({
+    //   server: process.env.EMAIL_SERVER,
+    //   from: process.env.EMAIL_FROM,
+    // }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: process.env.GOOGLE_SECRET,
+    // }),
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: "Credentials",
+      // The credentials is used to generate a suitable form on the sign in page.
+      // You can specify whatever fields you are expecting to be submitted.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        // Add logic here to look up the user from the credentials supplied
+        const user = { id: 1, name: "J Smith", email: "jsmith@example.com" };
+
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user;
+        } else {
+          // If you return null or false then the credentials will be rejected
+          return null;
+          // You can also Reject this callback with an Error or with a URL:
+          // throw new Error("error message") // Redirect to error page
+          // throw "/path/to/redirect"        // Redirect to a URL
+        }
+      },
     }),
   ],
   adapter: PrismaAdapter(prisma),
@@ -53,29 +80,29 @@ const options = {
   // The routes shown here are the default URLs that will be used when a custom
   // pages is not specified for that route.
   // https://next-auth.js.org/configuration/pages
-  // pages: {
-  //   signIn: "/auth/signin", // Displays signin buttons
-  //   signOut: "/auth/signout", // Displays form with sign out button
-  //   error: "/auth/error", // Error code passed in query string as ?error=
-  //   verifyRequest: "/auth/verify-request", // Used for check email page
-  //   newUser: null, // If set, new users will be directed here on first sign in
-  // },
+  pages: {
+    // signIn: "/auth/signin", // Displays signin buttons
+    // signOut: "/auth/signout", // Displays form with sign out button
+    // error: "/auth/error", // Error code passed in query string as ?error=
+    // verifyRequest: "/auth/verify-request", // Used for check email page
+    // newUser: null, // If set, new users will be directed here on first sign in
+  },
 
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks
 
   callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user) {
-        session.user.id = token.uid;
-      }
+    async signIn({ user, account, profile, email, credentials }) {
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
+    async session({ session, token, user }) {
       return session;
     },
-    jwt: async ({ user, token }) => {
-      if (user) {
-        token.uid = user.id;
-      }
+    async jwt({ token, user, account, profile, isNewUser }) {
       return token;
     },
   },
