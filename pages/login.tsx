@@ -69,7 +69,7 @@ export default function Login() {
                 </div>
                 <p className="my-4">New to Netflix?</p>
                 <p className="text-sm my-4">
-                  This page is protected by Google reCAPTCHA to ensure you're
+                  This page is protected by Google reCAPTCHA to ensure you`re
                   not a bot.
                   <a href="dfd" className="text-sky-400">
                     Learn More
