@@ -14,18 +14,18 @@ export default authHandler;
 
 const options = {
   providers: [
-    // EmailProvider({
-    //   server: process.env.EMAIL_SERVER,
-    //   from: process.env.EMAIL_FROM,
-    // }),
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    // }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: process.env.GOOGLE_SECRET,
-    // }),
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
       name: "Credentials",
@@ -60,7 +60,7 @@ const options = {
     // Use JSON Web Tokens for session instead of database sessions.
     // This option can be used with or without a database for users/accounts.
     // Note: `strategy` should be set to 'jwt' if no database is used.
-    strategy: "jwt",
+    // strategy: "jwt",
     // Seconds - How long until an idle session expires and is no longer valid.
     maxAge: 30 * 24 * 60 * 60, // 30 days
     // Seconds - Throttle how frequently to write to database to extend a session.
@@ -80,30 +80,33 @@ const options = {
   // The routes shown here are the default URLs that will be used when a custom
   // pages is not specified for that route.
   // https://next-auth.js.org/configuration/pages
-  pages: {
-    // signIn: "/auth/signin", // Displays signin buttons
-    // signOut: "/auth/signout", // Displays form with sign out button
-    // error: "/auth/error", // Error code passed in query string as ?error=
-    // verifyRequest: "/auth/verify-request", // Used for check email page
-    // newUser: null, // If set, new users will be directed here on first sign in
-  },
+  // pages: {
+  //   signIn: "/auth/signin", // Displays signin buttons
+  //   signOut: "/auth/signout", // Displays form with sign out button
+  //   error: "/auth/error", // Error code passed in query string as ?error=
+  //   verifyRequest: "/auth/verify-request", // Used for check email page
+  //   newUser: null, // If set, new users will be directed here on first sign in
+  // },
 
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks
 
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return true;
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.uid;
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
     },
     async redirect({ url, baseUrl }) {
       return baseUrl;
-    },
-    async session({ session, token, user }) {
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      return token;
     },
   },
   // Events are useful for logging

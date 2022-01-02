@@ -1,5 +1,5 @@
 import Header from "./components/header";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import prisma from "../lib/prisma";
 import { GetServerSideProps } from "next";
 import Navbar from "./components/navbar";
@@ -10,12 +10,20 @@ import devicePile from "../public/images/devicePile.png";
 import kids from "../public/images/kids.png";
 import Dropdown from "./components/dropdown";
 import Footer from "./components/footer";
+import { useState } from "react";
 
 export default function Home({ feed }) {
+  const [email, setEmail] = useState();
   const { data } = useSession();
+  console.log(feed);
 
-  console.log(feed.filter((e) => e.userId === data?.user.id));
-  console.log(data?.user.id);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email);
+    signIn("email", { email });
+  };
+  // console.log(feed.filter((e) => e.userId === data?.user.id));
+  // console.log(data?.user.id);
   return (
     <div>
       <div className="bg-netflix  h-screen bg-cover bg-center text-white border-b-8 border-b-solid border-b-slate-400">
@@ -30,7 +38,7 @@ export default function Home({ feed }) {
               Watch anywhere. Cancel anytime.
             </h2>
             <div className="flex justify-center">
-              <form className="m-4 flex flex-col">
+              <form className="m-4 flex flex-col" onSubmit={handleSubmit}>
                 <h1 className="text-xl mt-2 text-center  text-white mb-2">
                   Ready to watch? Enter your email to create or restart your
                   membership.
@@ -39,8 +47,14 @@ export default function Home({ feed }) {
                   <input
                     className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                     placeholder="Email Adress"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    type={"email"}
                   />
-                  <button className="md:px-10  bg-red-700  text-white font-bold md:p-4 uppercase mt-4 p-2 ">
+                  <button
+                    type="submit"
+                    className="md:px-10  bg-red-700  text-white font-bold md:p-4 uppercase mt-4 p-2 "
+                  >
                     Get Started
                   </button>
                 </div>
@@ -151,7 +165,7 @@ export default function Home({ feed }) {
         <h1 className="text-5xl font-bold">Frequently Asked Questions</h1>
         <Dropdown />
         <div className="flex justify-center">
-          <form className="m-4 flex flex-col">
+          <form className="m-4 flex flex-col" onSubmit={handleSubmit}>
             <h1 className="text-xl mt-2 text-center  text-white mb-2">
               Ready to watch? Enter your email to create or restart your
               membership.
@@ -160,6 +174,9 @@ export default function Home({ feed }) {
               <input
                 className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                 placeholder="Email Adress"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type={"email"}
               />
               <button className="md:px-10  bg-red-600  text-white font-bold md:p-4 uppercase mt-4 p-2 ">
                 Get Started

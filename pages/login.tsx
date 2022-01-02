@@ -1,68 +1,83 @@
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import logo from "../public/images/Netflix_Logo2.png";
-
+import { GoMarkGithub } from "react-icons/go";
+import { signIn } from "next-auth/react";
 export default function Login() {
+  const [email, setEmail] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signIn("email", { email });
+  };
   return (
-    <div className="bg-netflix  h-screen bg-cover bg-center">
-      <div className="h-screen bg-black/60">
+    <div className="bg-netflix  h-full bg-cover bg-center ">
+      <nav className="bg-black/40">
+        <li className="cursor-pointer">
+          <Image src={logo} width={220} height={100} alt="logo" />
+        </li>
+      </nav>
+      <div className="flex justify-center h-screen align-middle  bg-black/40">
         {/* <Header /> */}
-        <nav>
-          <li>
-            <Image src={logo} width={220} height={100} alt="logo" />
-          </li>
-        </nav>
-        <div className="w-full max-w-xs justify-center mx-auto">
-          <form className="w-96 shadow-md rounded px-8 py-32 mb-4 bg-black/80">
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                for="username"
-              >
-                Username
-              </label>
+
+        <div className="w-screen max-w-lg items-center">
+          <form
+            className="max-w-lg mx-10 shadow-md rounded px-8 py-20 mb-4 bg-black/80"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="text-white text-4xl mb-4">Sign In</h1>
+            {/* <div className="mb-4 pt-4">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="bg-gray-600 shadow appearance-none rounded w-full px-3 py-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 type="text"
                 placeholder="Username"
               ></input>
-            </div>
+            </div> */}
             <div className="mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                for="password"
-              >
-                Password
-              </label>
               <input
-                className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                placeholder="******************"
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-gray-600 shadow appearance-none rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="email"
+                type={"email"}
+                placeholder="email"
               ></input>
-              <p className="text-red-500 text-xs italic">
-                Please choose a password.
-              </p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
+                className="block w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
               >
                 Sign In
               </button>
-              <a
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="#"
-              >
-                Forgot Password?
-              </a>
+              <div className="text-gray-300  mt-4 flex justify-between">
+                <div>
+                  <input type="checkbox" value="fd" className="mx-2" />
+                  <label htmlFor="checkbox">Remember me</label>
+                </div>
+                <a href="" className="">
+                  Need Help?
+                </a>
+              </div>
+              <div className="text-gray-300 mt-4 ">
+                <div
+                  className="flex align-middle cursor-pointer"
+                  onClick={() => signIn("github")}
+                >
+                  <p>Login with Github </p>
+                  <GoMarkGithub className="ml-2 mt-1" />
+                </div>
+                <p className="my-4">New to Netflix?</p>
+                <p className="text-sm my-4">
+                  This page is protected by Google reCAPTCHA to ensure you're
+                  not a bot.
+                  <a href="dfd" className="text-sky-400">
+                    Learn More
+                  </a>
+                </p>
+              </div>
             </div>
           </form>
-          <p className="text-center text-gray-500 text-xs">
-            &copy;2020 Acme Corp. All rights reserved.
-          </p>
         </div>
       </div>
     </div>
