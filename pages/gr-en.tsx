@@ -13,7 +13,10 @@ import Footer from "./components/footer";
 import { useState } from "react";
 
 export default function Home({ feed }) {
-  const [email, setEmail] = useState();
+  // interface Email {
+  //   email: string;
+  // }
+  const [email, setEmail] = useState<any | null>(null);
   const { data } = useSession();
   console.log(feed);
 
@@ -48,7 +51,6 @@ export default function Home({ feed }) {
                     className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                     placeholder="Email Adress"
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email}
                     type={"email"}
                   />
                   <button
@@ -175,7 +177,6 @@ export default function Home({ feed }) {
                 className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                 placeholder="Email Adress"
                 onChange={(e) => setEmail(e.target.value)}
-                value={email}
                 type={"email"}
               />
               <button className="md:px-10  bg-red-600  text-white font-bold md:p-4 uppercase mt-4 p-2 ">

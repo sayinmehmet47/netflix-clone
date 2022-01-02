@@ -5,7 +5,7 @@ import logo from "../public/images/Netflix_Logo2.png";
 import { GoMarkGithub } from "react-icons/go";
 import { signIn } from "next-auth/react";
 export default function Login() {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState<any | null>(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn("email", { email });
