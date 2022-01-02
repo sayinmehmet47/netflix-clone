@@ -90,20 +90,17 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/callbacks
 
   callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user) {
-        session.user.id = token.uid;
-      }
-      return session;
-    },
-    jwt: async ({ user, token }) => {
-      if (user) {
-        token.uid = user.id;
-      }
-      return token;
+    async signIn({ user, account, profile, email, credentials }) {
+      return true;
     },
     async redirect({ url, baseUrl }) {
       return baseUrl;
+    },
+    async session({ session, user, token }) {
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return token;
     },
   },
   // Events are useful for logging

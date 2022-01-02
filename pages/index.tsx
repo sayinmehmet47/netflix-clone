@@ -6,8 +6,6 @@ import Navbar from "./components/navbar";
 export default function Home({ feed }) {
   const { data } = useSession();
 
-  console.log(feed.filter((e) => e.userId === data?.user.id));
-  console.log(data?.user.id);
   return (
     <div className="bg-netflix  h-screen bg-cover bg-center">
       <div className="h-screen bg-black/60">

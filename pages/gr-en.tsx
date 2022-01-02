@@ -13,12 +13,9 @@ import Footer from "./components/footer";
 import { useState } from "react";
 
 export default function Home({ feed }) {
-  // interface Email {
-  //   email: string;
-  // }
   const [email, setEmail] = useState<any | null>(null);
   const { data } = useSession();
-  console.log(feed);
+  console.log(data);
 
   const handleSubmit = (e) => {
     e.preventDefault();
