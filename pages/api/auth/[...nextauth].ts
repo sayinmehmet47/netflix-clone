@@ -9,10 +9,7 @@ import { NextApiHandler } from "next";
 import NextAuth from "next-auth";
 import prisma from "../../../lib/prisma";
 
-const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
-export default authHandler;
-
-const options = {
+export default NextAuth({
   providers: [
     EmailProvider({
       server: process.env.EMAIL_SERVER,
@@ -118,5 +115,4 @@ const options = {
   theme: {
     colorScheme: "dark",
   },
-  // debug: true,
-};
+});
