@@ -59,7 +59,7 @@ export default function Login() {
                   Need Help?
                 </a>
               </div>
-              <div className="text-gray-300 mt-4 ">
+              <div className="text-gray-300 mt-4">
                 <div
                   className="flex align-middle cursor-pointer"
                   onClick={() => signIn("github")}
@@ -80,6 +80,17 @@ export default function Login() {
           </form>
         </div>
       </div>
+      <footer className="bg-black/80  py-10 text-left text-gray-400 md:pl-28 sm:pl:20">
+        <p className="ml-4">Questions? Call 0850-390-7444</p>
+        <ul className="grid md:grid-cols-3 gap-6  text-xs sm:grid-cols-2 grid-cols-2 mt-4 mx-5">
+          <li className="">FAQ</li>
+          <li>Cookie Preferences</li>
+          <li>Help Center</li>
+          <li>Corporate Information</li>
+          <li>Terms of Use</li>
+          <li>Privacy</li>
+        </ul>
+      </footer>
     </div>
   );
 }
