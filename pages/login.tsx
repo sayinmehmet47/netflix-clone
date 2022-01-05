@@ -3,12 +3,14 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import logo from "../public/images/Netflix_Logo2.png";
 import { GoMarkGithub } from "react-icons/go";
+import { FcGoogle } from "react-icons/fc";
+
 import { signIn } from "next-auth/react";
 export default function Login() {
   const [email, setEmail] = useState<any | null>(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    signIn("email", { email });
+    signIn("email", { email, callbackUrl: "/browse" });
   };
   return (
     <div className="bg-netflix  h-full bg-cover bg-center ">
@@ -62,10 +64,17 @@ export default function Login() {
               <div className="text-gray-300 mt-4">
                 <div
                   className="flex align-middle cursor-pointer"
-                  onClick={() => signIn("github")}
+                  onClick={() => signIn("github", { callbackUrl: "/browse" })}
                 >
                   <p>Login with Github </p>
                   <GoMarkGithub className="ml-2 mt-1" />
+                </div>
+                <div
+                  className="flex align-middle cursor-pointer"
+                  onClick={() => signIn("google", { callbackUrl: "/browse" })}
+                >
+                  <p>Login with Google </p>
+                  <FcGoogle className="ml-2 mt-1" />
                 </div>
                 <p className="my-4">New to Netflix?</p>
                 <p className="text-sm my-4">

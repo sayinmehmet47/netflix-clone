@@ -25,8 +25,7 @@ a {
   max-height: 0;
   transition: all 0.1s;
 }
-input:checked + .tab-label .test {
-}
+
 input:checked + .tab-label .test svg {
   transform: rotate(180deg);
   stroke: rgb(221, 129, 129);

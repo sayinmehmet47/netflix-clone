@@ -91,10 +91,18 @@ export default NextAuth({
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      return true;
+      const isAllowedToSignIn = true;
+      if (isAllowedToSignIn) {
+        return true;
+      } else {
+        // Return false to display a default error message
+        return false;
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
     },
     async redirect({ url, baseUrl }) {
-      return baseUrl;
+      return Promise.resolve(url);
     },
     async session({ session, user, token }) {
       return session;
