@@ -41,7 +41,12 @@ export default function CarouselComponent({ name, fetchUrl }) {
         {movies.map((e) => {
           return (
             <div key={e.id} className="transform hover:scale-105">
-              <img alt="fd" src={`${base_url}${e.poster_path}`}></img>
+              <Image
+                width={250}
+                height={350}
+                alt="fd"
+                src={`${base_url}${e.poster_path}`}
+              />
             </div>
           );
         })}
