@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 export default function DropdownUser() {
@@ -20,11 +21,13 @@ export default function DropdownUser() {
           className="flex items-center"
         >
           <div className="relative flex  w-8 h-8  ">
-            <img
+            <Image
+              width={40}
+              height={40}
               className=" w-full rounded"
               src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
               alt=""
-            ></img>
+            />
             <IoMdArrowDropup
               onMouseEnter={handleAccountDropDown}
               onMouseLeave={handleAccountDropUp}
@@ -52,19 +55,23 @@ export default function DropdownUser() {
         >
           <ul className="h-auto px-0 pt-3 pb-1 w-full">
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              <img
+              <Image
+                width={40}
+                height={40}
                 className="mr-3"
                 src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABYnnca7HCf0z4YHtIK5R8MIGCeMyodAsxBYSBmMkYHqjSw46VWWyNQirfwxT-CkbxPkp-G84Wu-iOMwGG-r9QAs.png?r=f71"
                 alt=""
-              ></img>
+              />
               User
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              <img
+              <Image
+                width={40}
+                height={40}
                 className="mr-3"
                 src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
                 alt=""
-              ></img>
+              />
               Kids
             </li>
             <li className="py-1 px-3 hover:underline leading-8">
