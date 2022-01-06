@@ -7,7 +7,7 @@ export default function Home({ feed }) {
   const { data } = useSession();
 
   return (
-    <div className="bg-netflix  h-screen bg-cover bg-center">
+    <div className="bg-netflix   h-screen bg-cover bg-center">
       <div className="h-screen bg-black/60">
         {/* <Header /> */}
         <Navbar />

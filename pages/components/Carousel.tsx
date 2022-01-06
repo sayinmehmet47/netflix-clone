@@ -16,7 +16,6 @@ export default function CarouselComponent({ name, fetchUrl }) {
     }
     fetchData();
   }, [fetchUrl]);
-  console.log(movies);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

@@ -1,9 +1,13 @@
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 export default function DropdownUser() {
   // const [inLoading, setInLoading] = useState(false);
   const [active, setActive] = useState(false);
+  const { data: session, status } = useSession();
+  console.log(status);
+
   const handleAccountDropDown = () => {
     setActive(true);
   };
@@ -12,20 +16,24 @@ export default function DropdownUser() {
   };
 
   return (
-    <div>
-      <div className="account-menu relative cursor-pointer mx-4">
+    <div className="">
+      <div className="account-menu relative cursor-pointer mx-4 ">
         <div
           onMouseEnter={handleAccountDropDown}
           onMouseLeave={handleAccountDropUp}
           onClick={() => setActive(!active)}
           className="flex items-center"
         >
-          <div className="relative flex  w-8 h-8  ">
+          <div className="relative flex  w-8 h-8">
             <Image
               width={40}
               height={40}
-              className=" w-full rounded"
-              src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
+              className="mr-3 rounded-full"
+              src={
+                status === "authenticated"
+                  ? session.user.image
+                  : "https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
+              }
               alt=""
             />
             <IoMdArrowDropup
@@ -47,9 +55,9 @@ export default function DropdownUser() {
         <div
           onMouseEnter={handleAccountDropDown}
           onMouseLeave={handleAccountDropUp}
-          className={`flex flex-col border border-solid border-white border-opacity-30  ${
+          className={`flex  flex-col border border-solid border-white border-opacity-30  ${
             active
-              ? "absolute w-44 bg-opac-100 right-0 top-14 min-w-full transform duration-150 ease-out"
+              ? "absolute w-44 bg-black/60 text-white right-0 top-14 min-w-full transform duration-150 ease-out"
               : "hidden"
           }`}
         >
@@ -59,10 +67,14 @@ export default function DropdownUser() {
                 width={40}
                 height={40}
                 className="mr-3"
-                src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABYnnca7HCf0z4YHtIK5R8MIGCeMyodAsxBYSBmMkYHqjSw46VWWyNQirfwxT-CkbxPkp-G84Wu-iOMwGG-r9QAs.png?r=f71"
+                src={
+                  status === "authenticated"
+                    ? session.user.image
+                    : "https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
+                }
                 alt=""
               />
-              User
+              <span className="ml-3">User</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
               <Image
@@ -72,21 +84,21 @@ export default function DropdownUser() {
                 src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
                 alt=""
               />
-              Kids
+              <span className="ml-3"> Kids</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8">
-              Profil Yönetimi
+              <span className="ml-2">Profile Settings</span>
             </li>
           </ul>
-          <ul className="h-auto px-0 py-3 w-full border-t border-solid border-white border-opacity-30 ">
-            {/* {translate("browse.navbar.account-card.account", {
-              returnObjects: true,
-            }).map((links, index) => (
-              <li key={index} className="py-1 px-3 hover:underline leading-4">
-                {links}
-              </li>
-            ))} */}
-            <button className="py-1 px-3 hover:underline leading-4"></button>
+          <ul className="h-auto px-0 pl-3 w-full border-t border-solid border-white border-opacity-30 ">
+            <li className=" hover:underline ">Account</li>
+            <li className=" hover:underline ">Help Center</li>
+            <li
+              className=" hover:underline "
+              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+            >
+              Sign Out
+            </li>
           </ul>
         </div>
       </div>

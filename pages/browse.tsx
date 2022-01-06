@@ -17,19 +17,18 @@ const fetchRequest = {
   romanceMovieFetch: `/discover/movie?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_genres=10749`,
 };
 export default function Browse({ movies }) {
-  console.log(movies);
   const { poster_path, original_title, overview } = movies;
   const firstLine = overview.split(".")[0];
   const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
   return (
-    <div>
+    <div className="">
       <div
-        className={` h-screen bg-cover  bg-center text-gray-100 `}
+        className={` h-screen bg-cover  bg-center  text-gray-100 `}
         style={{ backgroundImage: `url(${path})` }}
       >
-        <nav className="grid grid-cols-2 py-2  text-white  bg-black/60">
-          <div className="flex col-span-full ml-10">
-            <div className="text-white  mt-2 ">
+        <nav className="grid  grid-cols-2 py-2   text-white  bg-black/60">
+          <div className="flex  col-span-full  ml-10">
+            <div className="text-white  mt-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className=""
@@ -43,8 +42,8 @@ export default function Browse({ movies }) {
                 </g>
               </svg>
             </div>
-            <ul className="flex ml-10 mt-4">
-              <li className="mx-2">Home</li>
+            <ul className="flex ml-10 mt-4 lg:text-lg md:text-sm invisible md:visible ">
+              <li className="mx-2 ">Home</li>
               <li className="mx-2">TV Shows</li>
               <li className="mx-2">Movies</li>
               <li className="mx-2">New & Popular</li>
@@ -61,12 +60,12 @@ export default function Browse({ movies }) {
         <div className="absolute left-20 top-1/4 w-2/5">
           <h1 className="text-5xl mb-3">{original_title}</h1>
           <h1>{firstLine ? firstLine : "fdsf"}.</h1>
-          <div className="flex mt-5">
-            <button className="bg-white text-black rounded whitespace-nowrap mr-5 px-8 py-3 xlm:px-5 xlm:py1 flex items-center">
+          <div className="flex mt-5 ">
+            <button className="bg-white mr-3 px-4 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
               <BsPlayFill className="text-3xl" />
               <p className="mx-5 text=2xl">Play</p>
             </button>
-            <button className="bg-gray-400  rounded whitespace-nowrap px-8 py-3 xlm:px-5 xlm:py1 flex items-center">
+            <button className="bg-gray-400 px-4 py-2 rounded whitespace-nowrap  xlm:px-5 xlm:py1 flex items-center">
               <IoAlertCircleOutline className="text-3xl" />
               <p className="text-black mx-5">More Info</p>
             </button>
