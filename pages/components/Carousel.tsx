@@ -2,14 +2,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "../axios";
+import axios from "axios";
 const base_url = "https://www.themoviedb.org/t/p/w220_and_h330_face//";
 export default function CarouselComponent({ name, fetchUrl }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(fetchUrl);
+      const response = await axios.get(
+        `https://api.themoviedb.org/3${fetchUrl}`
+      );
       setMovies(response.data.results);
     }
     fetchData();
