@@ -11,6 +11,7 @@ export default function DropdownUser() {
     status === "authenticated" ? `${session.user.image}` : profile;
   console.log(userImage);
   console.log(status);
+  console.log(session);
   const handleAccountDropDown = () => {
     setActive(true);
   };

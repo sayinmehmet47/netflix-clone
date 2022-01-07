@@ -27,11 +27,11 @@ export default function Browse({ movies }) {
         style={{ backgroundImage: `url(${path})` }}
       >
         <nav className="grid  grid-cols-2 py-2   text-white  bg-black/60">
-          <div className="flex  col-span-full  ml-10">
-            <div className="text-white  mt-2">
+          <div className="flex  col-span-full ">
+            <div className="text-white  mt-2 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className=""
+                className="pl-2"
                 fill="none"
                 viewBox="0 0 300 81.387"
                 width="10vw"
@@ -61,11 +61,11 @@ export default function Browse({ movies }) {
           <h1 className="text-5xl mb-3">{original_title}</h1>
           <h1>{firstLine ? firstLine : "fdsf"}.</h1>
           <div className="flex mt-5 ">
-            <button className="bg-white mr-3 px-4 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
+            <button className="bg-white mr-3 px-2 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
               <BsPlayFill className="text-3xl" />
               <p className="mx-5 text=2xl">Play</p>
             </button>
-            <button className="bg-gray-400 px-4 py-2 rounded whitespace-nowrap  xlm:px-5 xlm:py1 flex items-center">
+            <button className="bg-gray-400  py-2 rounded whitespace-nowrap  xlm:px-5 xlm:py1 flex items-center">
               <IoAlertCircleOutline className="text-3xl" />
               <p className="text-black mx-5">More Info</p>
             </button>
