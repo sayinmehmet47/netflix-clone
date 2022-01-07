@@ -7,7 +7,8 @@ export default function DropdownUser() {
   // const [inLoading, setInLoading] = useState(false);
   const [active, setActive] = useState(false);
   const { data: session, status } = useSession();
-  console.log(session);
+  const userImage = status === "authenticated" ? session.user.image : profile;
+  console.log(userImage);
   console.log(status);
   const handleAccountDropDown = () => {
     setActive(true);
@@ -60,17 +61,14 @@ export default function DropdownUser() {
         >
           <ul className="h-auto px-0 pt-3 pb-1 w-full">
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              {status === "authenticated" ? (
-                <Image
-                  width={40}
-                  height={40}
-                  className="mr-3"
-                  src={session.user.image}
-                  alt="img"
-                />
-              ) : null}
-
-              <span className="ml-3">User</span>
+              <Image
+                width={40}
+                height={40}
+                className="mr-3"
+                src={userImage}
+                alt="img"
+              />
+              )<span className="ml-3">User</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
               {/* <Image
