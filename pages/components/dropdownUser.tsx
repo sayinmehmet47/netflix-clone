@@ -60,13 +60,16 @@ export default function DropdownUser() {
         >
           <ul className="h-auto px-0 pt-3 pb-1 w-full">
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              <Image
-                width={40}
-                height={40}
-                className="mr-3"
-                src={status === "authenticated" ? session.user.image : profile}
-                alt="img"
-              />
+              {status === "authenticated" ? (
+                <Image
+                  width={40}
+                  height={40}
+                  className="mr-3"
+                  src={session.user.image}
+                  alt="img"
+                />
+              ) : null}
+
               <span className="ml-3">User</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
