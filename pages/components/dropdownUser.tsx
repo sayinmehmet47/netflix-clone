@@ -2,12 +2,11 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import profile from "../../public/images/profile.png";
 export default function DropdownUser() {
   // const [inLoading, setInLoading] = useState(false);
   const [active, setActive] = useState(false);
   const { data: session, status } = useSession();
-  console.log(status);
-  console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
   const handleAccountDropDown = () => {
     setActive(true);
@@ -30,12 +29,8 @@ export default function DropdownUser() {
               width={40}
               height={40}
               className="mr-3 rounded-full"
-              src={
-                status === "authenticated"
-                  ? session.user.image
-                  : "https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
-              }
-              alt=""
+              src={status === "authenticated" ? session.user.image : profile}
+              alt="img"
             />
             <IoMdArrowDropup
               onMouseEnter={handleAccountDropDown}
@@ -68,12 +63,8 @@ export default function DropdownUser() {
                 width={40}
                 height={40}
                 className="mr-3"
-                src={
-                  status === "authenticated"
-                    ? session.user.image
-                    : "https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
-                }
-                alt=""
+                src={status === "authenticated" ? session.user.image : profile}
+                alt="img"
               />
               <span className="ml-3">User</span>
             </li>
@@ -82,8 +73,8 @@ export default function DropdownUser() {
                 width={40}
                 height={40}
                 className="mr-3"
-                src="https://occ-0-4451-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABf9uIfUy3k75jnjPf-M5wZdrjcXMLe04_P5az0_eAPb3dECf_y_hunxCmOg5febcU6DyIEc1L18SK7t1vmE6s5o.png?r=fcd"
-                alt=""
+                src={status === "authenticated" ? session.user.image : profile}
+                alt="img"
               />
               <span className="ml-3"> Kids</span>
             </li>
