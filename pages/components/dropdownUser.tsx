@@ -7,7 +7,8 @@ export default function DropdownUser() {
   // const [inLoading, setInLoading] = useState(false);
   const [active, setActive] = useState(false);
   const { data: session, status } = useSession();
-
+  console.log(session);
+  console.log(status);
   const handleAccountDropDown = () => {
     setActive(true);
   };
@@ -25,13 +26,13 @@ export default function DropdownUser() {
           className="flex items-center"
         >
           <div className="relative flex  w-8 h-8">
-            <Image
+            {/* <Image
               width={40}
               height={40}
               className="mr-3 rounded-full"
               src={status === "authenticated" ? session.user.image : profile}
               alt="img"
-            />
+            /> */}
             <IoMdArrowDropup
               onMouseEnter={handleAccountDropDown}
               onMouseLeave={handleAccountDropUp}
@@ -59,23 +60,23 @@ export default function DropdownUser() {
         >
           <ul className="h-auto px-0 pt-3 pb-1 w-full">
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              <Image
+              {/* <Image
                 width={40}
                 height={40}
                 className="mr-3"
                 src={status === "authenticated" ? session.user.image : profile}
                 alt="img"
-              />
+              /> */}
               <span className="ml-3">User</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              <Image
+              {/* <Image
                 width={40}
                 height={40}
                 className="mr-3"
                 src={status === "authenticated" ? session.user.image : profile}
                 alt="img"
-              />
+              /> */}
               <span className="ml-3"> Kids</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8">
