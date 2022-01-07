@@ -26,13 +26,13 @@ export default function DropdownUser() {
           className="flex items-center"
         >
           <div className="relative flex  w-8 h-8">
-            {/* <Image
+            <Image
               width={40}
               height={40}
               className="mr-3 rounded-full"
               src={status === "authenticated" ? session.user.image : profile}
               alt="img"
-            /> */}
+            />
             <IoMdArrowDropup
               onMouseEnter={handleAccountDropDown}
               onMouseLeave={handleAccountDropUp}
