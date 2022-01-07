@@ -32,8 +32,8 @@ export default function DropdownUser() {
             <Image
               width={40}
               height={40}
-              className="mr-3 rounded"
-              src={profile}
+              className="mr-3"
+              src={userImage}
               alt="img"
             />
             <IoMdArrowDropup
@@ -66,8 +66,8 @@ export default function DropdownUser() {
               <Image
                 width={40}
                 height={40}
-                className="mr-3"
-                src={userImage}
+                className="mr-3 rounded"
+                src={profile}
                 alt="img"
               />
               <span className="ml-3">User</span>
