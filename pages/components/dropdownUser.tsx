@@ -29,8 +29,8 @@ export default function DropdownUser() {
             <Image
               width={40}
               height={40}
-              className="mr-3 rounded-full"
-              src={status === "authenticated" ? session.user.image : profile}
+              className="mr-3 rounded"
+              src={profile}
               alt="img"
             />
             <IoMdArrowDropup
@@ -54,19 +54,19 @@ export default function DropdownUser() {
           onMouseLeave={handleAccountDropUp}
           className={`flex  flex-col border border-solid border-white border-opacity-30  ${
             active
-              ? "absolute w-44 bg-black/60 text-white right-0 top-14 min-w-full transform duration-150 ease-out"
+              ? "absolute w-44 pb-5 bg-black/60 text-white right-0 top-14 min-w-full transform duration-150 ease-out"
               : "hidden"
           }`}
         >
           <ul className="h-auto px-0 pt-3 pb-1 w-full">
             <li className="py-1 px-3 hover:underline leading-8 flex">
-              {/* <Image
+              <Image
                 width={40}
                 height={40}
                 className="mr-3"
                 src={status === "authenticated" ? session.user.image : profile}
                 alt="img"
-              /> */}
+              />
               <span className="ml-3">User</span>
             </li>
             <li className="py-1 px-3 hover:underline leading-8 flex">
