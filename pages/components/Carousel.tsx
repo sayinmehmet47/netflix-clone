@@ -20,11 +20,11 @@ export default function CarouselComponent({ name, fetchUrl }) {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 8,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 7,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -36,15 +36,18 @@ export default function CarouselComponent({ name, fetchUrl }) {
     },
   };
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white ">
       <h1 className="text-3xl py-5 pl-10">{name}</h1>
       <Carousel responsive={responsive} className="pl-10 py-10">
         {movies.map((e) => {
           return (
-            <div key={e.id} className="transform hover:scale-105">
+            <div
+              key={e.id}
+              className="transform hover:scale-125 cursor-pointer"
+            >
               <Image
-                width={250}
-                height={350}
+                width={160}
+                height={135}
                 alt="fd"
                 src={`${base_url}${e.poster_path}`}
               />

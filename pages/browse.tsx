@@ -42,18 +42,20 @@ export default function Browse({ movies }) {
                 </g>
               </svg>
             </div>
-            <ul className="flex ml-10 mt-4 lg:text-lg md:text-sm invisible md:visible ">
-              <li className="mx-2 ">Home</li>
-              <li className="mx-2">TV Shows</li>
-              <li className="mx-2">Movies</li>
-              <li className="mx-2">New & Popular</li>
-              <li className="mx-2">My List</li>
+            <ul className="flex cursor-pointer ml-10 mt-4 lg:text-lg md:text-sm invisible md:visible ">
+              <li className="mx-2 hover:text-gray-300">Home</li>
+              <li className="mx-2 hover:text-gray-300">TV Shows</li>
+              <li className="mx-2 hover:text-gray-300">Movies</li>
+              <li className="mx-2 hover:text-gray-300">New & Popular</li>
+              <li className="mx-2 hover:text-gray-300">My List</li>
             </ul>
           </div>
           <ul className="flex ml-10  pt-3 col-end-6 mr-10 align-middle">
-            <BsSearch className="mt-1" />
-            <li className="mx-2">Kids</li>
-            <BsBell className="mt-1" />
+            <BsSearch className="mt-1 md:text-sm lg:text-lg sm:text-xs text-xs cursor-pointer" />
+            <li className="mx-2 hover:text-gray-300 cursor-pointer md:text-sm lg:text-lg sm:text-xs text-xs">
+              Kids
+            </li>
+            <BsBell className="mt-1 hover:text-gray-300 md:text-sm lg:text-lg sm:text-xs text-xs cursor-pointer" />
             <DropdownUser />
           </ul>
         </nav>
