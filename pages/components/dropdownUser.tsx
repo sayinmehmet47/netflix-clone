@@ -7,6 +7,7 @@ export default function DropdownUser() {
   const [active, setActive] = useState(false);
   const { data: session, status } = useSession();
   console.log(status);
+  console.log(process.env.NEXT_PUBLIC_BASE_URL);
 
   const handleAccountDropDown = () => {
     setActive(true);
@@ -95,7 +96,9 @@ export default function DropdownUser() {
             <li className=" hover:underline ">Help Center</li>
             <li
               className=" hover:underline "
-              onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+              onClick={() =>
+                signOut({ callbackUrl: process.env.NEXT_PUBLIC_BASE_URL })
+              }
             >
               Sign Out
             </li>
