@@ -54,7 +54,7 @@ export default function Browse({ movies }) {
             <BsSearch className="mt-1" />
             <li className="mx-2">Kids</li>
             <BsBell className="mt-1" />
-            <DropdownUser />
+            {/* <DropdownUser /> */}
           </ul>
         </nav>
         <div className="absolute left-20 top-1/4 w-2/5">
