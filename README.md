@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Netflix Clone Project
 
-## Getting Started
+- This project has been developed to create a clone of Netflix Official Website.
+- Users can signin,signout with google,github and mail adress.
+- After logging in to the page, the users can see the movies by categories.
+- To store the authenticated users, I used PostgreSQL
 
-First, run the development server:
+# Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [x] NextJS
+- [x] Prisma
+- [x] Tailwind CSS
+- [x] NextAuth
+- [x] TypeScript
+- [x] PostgreSQL
+- [x] Heroku
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For fetching movie data
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [moviedb](https://developers.themoviedb.org/3/movies/get-movie-details) used for fetching movies data according to categories
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# MainPage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![image](https://user-images.githubusercontent.com/75525090/148640976-8afea931-1a10-4f9d-8fe0-6bad1aae5f3f.png)
 
-## Learn More
+# SignIn
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://user-images.githubusercontent.com/75525090/148640996-da4bc77d-a5fc-47e6-a618-68d9cc110252.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Browse
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![image](https://user-images.githubusercontent.com/75525090/148641025-6c485d0d-c07a-42d1-997d-9ee0a216ddd4.png)
 
-## Deploy on Vercel
+# Footer and Categories
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://user-images.githubusercontent.com/75525090/148641039-1414b45a-ff89-443b-a5ea-ab615328637c.png)

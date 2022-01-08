@@ -3,31 +3,43 @@ import React from "react";
 export default function Footer() {
   return (
     <div className="bg-black text-white  justify-center pb-12">
-      <p className="text-1xl text-center py-4 text-gray-400">
+      {/* <p className="text-1xl text-center py-4 text-gray-400">
         Frequently Asked Questions
-      </p>
+      </p> */}
       <div className="text-sm md:flex  grid grid-cols-2 text-gray-400 text-left px-10 lg:justify-around justify-between align-center  pb-5">
         <ul className="flex-column grid-cols-1 m-3">
-          <li className="my-2">FAQ</li>
-          <li className="my-2">Media Center</li>
-          <li className="my-2">Redeem Gift Cards</li>
-          <li className="my-2">Terms of Use</li>
-          <li className="my-2">Corporate Information</li>
-          <li className="my-2">Legal Notices</li>
+          <li className="my-2 hover:underline cursor-pointer">FAQ</li>
+          <li className="my-2 hover:underline cursor-pointer">Media Center</li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Redeem Gift Cards
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">Terms of Use</li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Corporate Information
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">Legal Notices</li>
         </ul>
         <ul className="flex-column m-3">
-          <li className="my-2">Help Center</li>
-          <li className="my-2">Investor Relations</li>
-          <li className="my-2">Buy Gift Cards</li>
-          <li className="my-2">Contact Us</li>
-          <li className="my-2">Only on Netflix</li>
-          <li className="my-2">Account</li>
+          <li className="my-2 hover:underline cursor-pointer">Help Center</li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Investor Relations
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Buy Gift Cards
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">Contact Us</li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Only on Netflix
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">Account</li>
         </ul>
         <ul className="flex-column m-3">
-          <li className="my-2">Jobs</li>
-          <li className="my-2">Ways to Watch</li>
-          <li className="my-2">Cookie Preferences</li>
-          <li className="my-2">Speed Test</li>
+          <li className="my-2 hover:underline cursor-pointer">Jobs</li>
+          <li className="my-2 hover:underline cursor-pointer">Ways to Watch</li>
+          <li className="my-2 hover:underline cursor-pointer">
+            Cookie Preferences
+          </li>
+          <li className="my-2 hover:underline cursor-pointer">Speed Test</li>
         </ul>
       </div>
       <div className="text-md  text-white rounded-sm relative md:ml-44 ml-14 mt-3 mb-8">

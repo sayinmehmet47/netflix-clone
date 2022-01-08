@@ -7,6 +7,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
 import CarouselComponent from "./components/Carousel";
 import DropdownUser from "./components/dropdownUser";
+import Footer from "./components/footer";
 const fetchRequest = {
   netflixOriginalsFetch: `/discover/tv?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_networks=213`,
   trendingFetch: `/trending/all/week?api_key=32d0c559d4f922d14ea1f7f066e100a4&language=en-US`,
@@ -59,9 +60,11 @@ export default function Browse({ movies }) {
             <DropdownUser />
           </ul>
         </nav>
-        <div className="absolute left-20 top-1/4 w-2/5">
-          <h1 className="text-5xl mb-3">{original_title}</h1>
-          <h1>{firstLine ? firstLine : "fdsf"}.</h1>
+        <div className="absolute md:left-20 left-10 top-1/4 w-2/5">
+          <h1 className="md:text-5xl text-4xl mb-3">{original_title}</h1>
+          <h1 className="md:text-xl text-sm py-3">
+            {firstLine ? firstLine : "fdsf"}.
+          </h1>
           <div className="flex mt-5 ">
             <button className="bg-white mr-3 px-2 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
               <BsPlayFill className="text-3xl" />
@@ -94,6 +97,7 @@ export default function Browse({ movies }) {
         name="Horror"
         fetchUrl={fetchRequest.horrorMovieFetch}
       />
+      <Footer />
     </div>
   );
 }

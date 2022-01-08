@@ -15,9 +15,14 @@ export default function Login() {
   return (
     <div className="bg-netflix  h-full bg-cover bg-center ">
       <nav className="bg-black/40">
-        <li className="cursor-pointer">
-          <Image src={logo} width={220} height={100} alt="logo" />
-        </li>
+        <Link href="/gr-en">
+          <a>
+            {" "}
+            <li className="cursor-pointer">
+              <Image src={logo} width={220} height={100} alt="logo" />
+            </li>
+          </a>
+        </Link>
       </nav>
       <div className="flex justify-center h-screen align-middle  bg-black/40">
         {/* <Header /> */}
@@ -63,14 +68,14 @@ export default function Login() {
               </div>
               <div className="text-gray-300 mt-4">
                 <div
-                  className="flex align-middle cursor-pointer"
+                  className="flex align-middle cursor-pointer hover:underline"
                   onClick={() => signIn("github", { callbackUrl: "/browse" })}
                 >
                   <p>Login with Github </p>
                   <GoMarkGithub className="ml-2 mt-1" />
                 </div>
                 <div
-                  className="flex align-middle cursor-pointer"
+                  className="flex align-middle cursor-pointer hover:underline"
                   onClick={() => signIn("google", { callbackUrl: "/browse" })}
                 >
                   <p>Login with Google </p>
