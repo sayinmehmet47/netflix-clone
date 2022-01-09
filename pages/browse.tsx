@@ -17,9 +17,16 @@ const fetchRequest = {
   horrorMovieFetch: `/discover/movie?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_genres=27`,
   romanceMovieFetch: `/discover/movie?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_genres=10749`,
 };
-export default function Browse({ movies }) {
+interface MoviesProps {
+  movies: {
+    poster_path: string;
+    original_title: string;
+    overview: string;
+  };
+}
+export default function Browse({ movies }: MoviesProps): React.ReactElement {
   const { poster_path, original_title, overview } = movies;
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const firstLine = overview.split(".")[0];
   const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
   useEffect(() => {
@@ -93,22 +100,32 @@ export default function Browse({ movies }) {
       <CarouselComponent
         name="Netflix Originals"
         fetchUrl={fetchRequest.trendingFetch}
+        width={160}
+        height={210}
       />
       <CarouselComponent
         name="Trending Now"
         fetchUrl={fetchRequest.topRatedFetch}
+        width={160}
+        height={210}
       />
       <CarouselComponent
         name="Comedies"
         fetchUrl={fetchRequest.comedyMovieFetch}
+        width={160}
+        height={210}
       />
       <CarouselComponent
         name="Actions"
         fetchUrl={fetchRequest.actionMovieFetch}
+        width={160}
+        height={210}
       />
       <CarouselComponent
         name="Horror"
         fetchUrl={fetchRequest.horrorMovieFetch}
+        width={160}
+        height={210}
       />
       <Footer />
     </div>

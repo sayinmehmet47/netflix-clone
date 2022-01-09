@@ -8,9 +8,16 @@ const base_url = "https://www.themoviedb.org/t/p/w220_and_h330_face//";
 type Props = {
   name: String;
   fetchUrl: String;
+  width: number;
+  height: number;
 };
 
-const CarouselComponent: FunctionComponent<Props> = ({ name, fetchUrl }) => {
+const CarouselComponent: FunctionComponent<Props> = ({
+  name,
+  fetchUrl,
+  width,
+  height,
+}) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -50,8 +57,9 @@ const CarouselComponent: FunctionComponent<Props> = ({ name, fetchUrl }) => {
             <div key={e.id} className="cursor-pointer">
               <div>
                 <Image
-                  width={160}
-                  height={210}
+                  className="rounded"
+                  width={width}
+                  height={height}
                   alt="fd"
                   src={`${base_url}${e.poster_path}`}
                 />
