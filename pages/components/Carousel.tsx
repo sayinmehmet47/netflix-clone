@@ -1,10 +1,16 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 const base_url = "https://www.themoviedb.org/t/p/w220_and_h330_face//";
-export default function CarouselComponent({ name, fetchUrl }) {
+
+type Props = {
+  name: String;
+  fetchUrl: String;
+};
+
+const CarouselComponent: FunctionComponent<Props> = ({ name, fetchUrl }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -57,4 +63,5 @@ export default function CarouselComponent({ name, fetchUrl }) {
       </Carousel>
     </div>
   );
-}
+};
+export default CarouselComponent;

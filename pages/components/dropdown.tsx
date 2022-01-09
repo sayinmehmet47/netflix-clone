@@ -9,7 +9,7 @@ export default function Dropdown() {
             <div className=" tab mt-2">
               <div className=" bg-neutral-700 relative">
                 <input
-                  className="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6 "
+                  className="w-full absolute z-10 cursor-pointer opacity-0 h-20  "
                   type="checkbox"
                   id="chck1"
                 ></input>
@@ -40,7 +40,7 @@ export default function Dropdown() {
             <div className=" tab mt-2">
               <div className="bg-neutral-700 relative ">
                 <input
-                  className="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6"
+                  className="w-full absolute z-10 cursor-pointer opacity-0 h-20 "
                   type="checkbox"
                   id="chck2"
                 ></input>
@@ -69,7 +69,7 @@ export default function Dropdown() {
             <div className=" tab mt-2">
               <div className="bg-neutral-700 relative">
                 <input
-                  className="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6"
+                  className="w-full absolute z-10 cursor-pointer opacity-0 h-20"
                   type="checkbox"
                   id="chck3"
                 ></input>
