@@ -6,8 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Martel Sans", sans-serif;
 }
 
 a {
@@ -36,3 +35,5 @@ input:checked + .tab-label::after {
 input:checked ~ .tab-content {
   max-height: 100vh;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@100&display=swap");

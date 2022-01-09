@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
@@ -43,20 +43,19 @@ const CarouselComponent: FunctionComponent<Props> = ({ name, fetchUrl }) => {
   };
   return (
     <div className="bg-black text-white ">
-      <h1 className="text-3xl py-5 pl-10">{name}</h1>
+      <h1 className="text-3xl py-5 pl-10 ">{name}</h1>
       <Carousel responsive={responsive} className="pl-10 py-10">
         {movies.map((e) => {
           return (
-            <div
-              key={e.id}
-              className="transform hover:scale-125 cursor-pointer"
-            >
-              <Image
-                width={160}
-                height={135}
-                alt="fd"
-                src={`${base_url}${e.poster_path}`}
-              />
+            <div key={e.id} className="cursor-pointer">
+              <div>
+                <Image
+                  width={160}
+                  height={210}
+                  alt="fd"
+                  src={`${base_url}${e.poster_path}`}
+                />
+              </div>
             </div>
           );
         })}

@@ -32,7 +32,7 @@ export default function DropdownUser() {
             <Image
               width={40}
               height={40}
-              className="mr-3"
+              className="mr-3 rounded"
               src={userImage}
               alt="img"
             />

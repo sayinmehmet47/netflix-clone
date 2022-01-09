@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getData } from "./api/randomMovie";
 import { BsPlayFill } from "react-icons/bs";
 import { IoAlertCircleOutline } from "react-icons/io5";
@@ -19,15 +19,28 @@ const fetchRequest = {
 };
 export default function Browse({ movies }) {
   const { poster_path, original_title, overview } = movies;
+  const [isScrolled, setIsScrolled] = useState(false);
   const firstLine = overview.split(".")[0];
   const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  const handleScroll = (e) => {
+    const offset = window.pageYOffset;
+    offset > 100 ? setIsScrolled(true) : setIsScrolled(false);
+  };
   return (
     <div className="">
       <div
         className={` h-screen bg-cover  bg-center  text-gray-100 `}
         style={{ backgroundImage: `url(${path})` }}
       >
-        <nav className="grid  grid-cols-2 py-2   text-white  bg-black/60">
+        <nav
+          className={`grid fixed z-50 w-full grid-cols-2 py-2   text-white transition-all duration-200   ${
+            isScrolled ? "bg-black/80" : "bg-transparent"
+          }`}
+        >
           <div className="flex  col-span-full ">
             <div className="text-white  mt-2 ">
               <svg
@@ -66,11 +79,11 @@ export default function Browse({ movies }) {
             {firstLine ? firstLine : "fdsf"}.
           </h1>
           <div className="flex mt-5 ">
-            <button className="bg-white mr-3 px-2 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
+            <button className="bg-white hover:bg-gray-400 mr-3 px-2 py-2 text-black rounded whitespace-nowrap   xlm:px-5 xlm:py1 flex items-center">
               <BsPlayFill className="text-3xl" />
               <p className="mx-5 text=2xl">Play</p>
             </button>
-            <button className="bg-gray-400  py-2 rounded whitespace-nowrap  xlm:px-5 xlm:py1 flex items-center">
+            <button className="bg-gray-400 hover:bg-gray-500 py-2 rounded whitespace-nowrap  xlm:px-5 xlm:py1 flex items-center">
               <IoAlertCircleOutline className="text-3xl" />
               <p className="text-black mx-5">More Info</p>
             </button>
