@@ -95,14 +95,18 @@ export default function Login() {
         </div>
       </div>
       <footer className="bg-black/80  py-10 text-left text-gray-400 md:pl-28 sm:pl:20">
-        <p className="ml-4">Questions? Call 0850-390-7444</p>
+        <p className="hover:underline cursor-pointer">
+          Questions? Call 0850-390-7444
+        </p>
         <ul className="grid md:grid-cols-3 gap-6  text-xs sm:grid-cols-2 grid-cols-2 mt-4 mx-5">
-          <li className="">FAQ</li>
-          <li>Cookie Preferences</li>
-          <li>Help Center</li>
-          <li>Corporate Information</li>
-          <li>Terms of Use</li>
-          <li>Privacy</li>
+          <li className="hover:underline cursor-pointer">FAQ</li>
+          <li className="hover:underline cursor-pointer">Cookie Preferences</li>
+          <li className="hover:underline cursor-pointer">Help Center</li>
+          <li className="hover:underline cursor-pointer">
+            Corporate Information
+          </li>
+          <li className="hover:underline cursor-pointer">Terms of Use</li>
+          <li className="hover:underline cursor-pointer">Privacy</li>
         </ul>
       </footer>
     </div>

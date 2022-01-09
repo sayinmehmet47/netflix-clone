@@ -52,7 +52,7 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
             <div className="text-white  mt-2 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="pl-2"
+                className="md:pl-8 pl-4"
                 fill="none"
                 viewBox="0 0 300 81.387"
                 width="10vw"

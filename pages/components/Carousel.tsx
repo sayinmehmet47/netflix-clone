@@ -57,7 +57,7 @@ const CarouselComponent: FunctionComponent<Props> = ({
             <div key={e.id} className="cursor-pointer">
               <div>
                 <Image
-                  className="rounded"
+                  className="rounded shadow-xl"
                   width={width}
                   height={height}
                   alt="fd"
