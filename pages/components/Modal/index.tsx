@@ -5,7 +5,7 @@ import Kids from "../../../public/images/kids.png";
 export default function Modal({ props }) {
   const [onPicture, setOnPicture] = useState(false);
   console.log(props);
-  const { title, overview } = props;
+  const { overview } = props;
 
   return (
     <div
