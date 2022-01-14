@@ -4,6 +4,7 @@
 - Users can signin,signout with google,github and mail adress.
 - After logging in to the page, the users can see the movies by categories.
 - To store the authenticated users, I used PostgreSQL
+- Browse route is protected.So you have to signIn to see it
 
 # Technologies Used
 
