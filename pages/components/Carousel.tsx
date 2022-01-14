@@ -11,7 +11,6 @@ import React, {
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
-const ModalComponent = dynamic(import("./Modal/index"));
 const base_url = "https://www.themoviedb.org/t/p/w220_and_h330_face//";
 
 type Props = {
@@ -66,20 +65,13 @@ const CarouselComponent: FunctionComponent<Props> = ({
     <div className="bg-black text-white">
       <h1 className="text-3xl py-5 px-10 ">{name}</h1>
 
-      <Carousel
-        centerMode={true}
-        responsive={responsive}
-        className="w-full px-10 py-16 "
-      >
+      <Carousel responsive={responsive} className="w-full px-10 py-16 ">
         {movies.map((e) => {
           return (
             <div key={e.id} className="cursor-pointer">
-              <div>
-                <ModalComponent
-                  props={{ title: e.title, overview: e.overview }}
-                />
+              <div className="hover:scale-125">
                 <Image
-                  className="rounded shadow-xl"
+                  className="rounded shadow-xl "
                   width={width}
                   height={height}
                   alt="fd"
