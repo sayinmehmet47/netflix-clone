@@ -8,7 +8,6 @@ import { BsBell } from "react-icons/bs";
 import CarouselComponent from "./components/Carousel";
 import DropdownUser from "./components/dropdownUser";
 import Footer from "./components/footer";
-import Modal from "./components/Modal";
 import { useSession } from "next-auth/react";
 import AccessDenied from "./components/AccessDenied";
 const fetchRequest = {
