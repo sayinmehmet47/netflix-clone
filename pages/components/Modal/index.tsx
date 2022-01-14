@@ -4,8 +4,8 @@ import Kids from "../../../public/images/kids.png";
 
 export default function Modal({ props }) {
   const [onPicture, setOnPicture] = useState(false);
-  console.log(props);
-  const { overview } = props;
+  // console.log(props);
+  // const { overview } = props;
 
   return (
     <div
@@ -22,7 +22,7 @@ export default function Modal({ props }) {
           <div className="mt-4">
             <Image src={Kids} alt="fd" width={320} height={320} />
 
-            <h2>{overview}</h2>
+            {/* <h2>{overview}</h2> */}
             {/* <button className="px-4 py-2 text-white bg-red-600 rounded">
               Cancel
             </button>
