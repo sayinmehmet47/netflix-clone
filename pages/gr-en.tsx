@@ -11,6 +11,7 @@ import kids from "../public/images/kids.png";
 import Dropdown from "./components/dropdown";
 import Footer from "./components/footer";
 import { useState } from "react";
+import Modal from "./components/Modal";
 
 export default function Home({ feed }) {
   const [email, setEmail] = useState<any | null>(null);

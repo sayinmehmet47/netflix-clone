@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import prisma from "../lib/prisma";
 import { GetServerSideProps } from "next";
 import Navbar from "./components/navbar";
+
 export default function Home({ feed }) {
   const { data } = useSession();
 

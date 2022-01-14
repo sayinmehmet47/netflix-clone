@@ -8,6 +8,9 @@ import { BsBell } from "react-icons/bs";
 import CarouselComponent from "./components/Carousel";
 import DropdownUser from "./components/dropdownUser";
 import Footer from "./components/footer";
+import Modal from "./components/Modal";
+import { useSession } from "next-auth/react";
+import AccessDenied from "./components/AccessDenied";
 const fetchRequest = {
   netflixOriginalsFetch: `/discover/tv?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_networks=213`,
   trendingFetch: `/trending/all/week?api_key=32d0c559d4f922d14ea1f7f066e100a4&language=en-US`,
@@ -27,6 +30,8 @@ interface MoviesProps {
 export default function Browse({ movies }: MoviesProps): React.ReactElement {
   const { poster_path, original_title, overview } = movies;
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
   const firstLine = overview.split(".")[0];
   const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
   useEffect(() => {
@@ -37,6 +42,9 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
     const offset = window.pageYOffset;
     offset > 100 ? setIsScrolled(true) : setIsScrolled(false);
   };
+  if (!session) {
+    return <AccessDenied />;
+  }
   return (
     <div className="">
       <div
@@ -82,6 +90,7 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
         </nav>
         <div className="absolute md:left-20 left-10 top-1/4 w-2/5">
           <h1 className="md:text-5xl text-4xl mb-3">{original_title}</h1>
+
           <h1 className="md:text-xl text-sm py-3">
             {firstLine ? firstLine : "fdsf"}.
           </h1>
@@ -97,6 +106,7 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
           </div>
         </div>
       </div>
+
       <CarouselComponent
         name="Netflix Originals"
         fetchUrl={fetchRequest.trendingFetch}

@@ -15,5 +15,5 @@ module.exports = {
       backgroundImage: ["dark"],
     },
   },
-  plugins: [],
+  plugins: [require("@themesberg/flowbite/plugin")],
 };
