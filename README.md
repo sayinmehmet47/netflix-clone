@@ -5,6 +5,7 @@
 - After logging in to the page, the users can see the movies by categories.
 - To store the authenticated users, I used PostgreSQL
 - Browse route is protected.So you have to signIn to see it
+- User can authenticate with google,email and github by the help of NextAuth providers
 
 # Technologies Used
 
