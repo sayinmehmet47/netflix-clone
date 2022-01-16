@@ -65,7 +65,7 @@ const CarouselComponent: FunctionComponent<Props> = ({
     <div className="bg-black text-white">
       <h1 className="text-3xl py-5 px-10 ">{name}</h1>
 
-      <Carousel responsive={responsive} className="w-full px-10 py-16 ">
+      <Carousel responsive={responsive} className="w-full ">
         {movies.map((e) => {
           return (
             <div key={e.id} className="cursor-pointer">

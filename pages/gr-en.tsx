@@ -12,9 +12,8 @@ import Dropdown from "./components/dropdown";
 import Footer from "./components/footer";
 import { useState } from "react";
 
-export default function Home({ feed }) {
+export default function Home() {
   const [email, setEmail] = useState<any | null>(null);
-  const { data } = useSession();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +24,11 @@ export default function Home({ feed }) {
   // console.log(data?.user.id);
   return (
     <div>
-      <div className="bg-netflix  h-screen bg-cover bg-center text-white border-b-8 border-b-solid border-b-slate-400">
+      <div
+        role="heading"
+        aria-level={1}
+        className="bg-netflix  h-screen bg-cover bg-center text-white border-b-8 border-b-solid border-b-slate-400"
+      >
         <div className="h-screen bg-black/60 ">
           {/* <Header /> */}
           <Navbar />
@@ -81,7 +84,6 @@ export default function Home({ feed }) {
           <div className="absolute max-w-xs mt-12 pt-8">
             <video
               autoPlay
-              muted
               loop
               playsInline
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v"
@@ -130,7 +132,6 @@ export default function Home({ feed }) {
           <div className="absolute max-w-xs pt-16 mt-14 z-30">
             <video
               autoPlay
-              muted
               loop
               playsInline
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v"

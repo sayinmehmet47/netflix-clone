@@ -6,6 +6,7 @@
 - To store the authenticated users, I used PostgreSQL
 - Browse route is protected.So you have to signIn to see it
 - User can authenticate with google,email and github by the help of NextAuth providers
+- Jest is used to test some components
 
 # Technologies Used
 
@@ -16,6 +17,7 @@
 - [x] TypeScript
 - [x] PostgreSQL
 - [x] Heroku
+- [x] Jest
 
 For fetching movie data
 
