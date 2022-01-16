@@ -84,6 +84,7 @@ export default function Home() {
           <div className="absolute max-w-xs mt-12 pt-8">
             <video
               autoPlay
+              muted
               loop
               playsInline
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v"
@@ -132,6 +133,7 @@ export default function Home() {
           <div className="absolute max-w-xs pt-16 mt-14 z-30">
             <video
               autoPlay
+              muted
               loop
               playsInline
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v"
