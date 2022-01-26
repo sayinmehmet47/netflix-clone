@@ -69,13 +69,13 @@ export default function MovieModal({
       </div>
       <div className="relative bottom-8 mx-5">
         <h1 className="text-green-500 text-2xl font-bold">
-          {movieSelected.vote_average}
+          {movieSelected?.vote_average}
           <span className="text-lg text-white ml-2">
             {" "}
-            {movieSelected.title}
+            {movieSelected?.title}
           </span>
         </h1>
-        <h3 className="text-sm">{movieSelected.overview}</h3>
+        <h3 className="text-sm">{movieSelected?.overview}</h3>
       </div>
     </div>
   );
