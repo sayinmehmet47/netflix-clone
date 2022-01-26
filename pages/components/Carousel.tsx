@@ -88,7 +88,7 @@ const CarouselComponent: FunctionComponent<Props> = ({
         {!loading ? (
           movies.map((e, index) => {
             return (
-              <div key={index} className="cursor-pointer">
+              <div key={index} className="cursor-pointer hover:scale-110">
                 <div>
                   <Image
                     onClick={() => handleClick(e)}
