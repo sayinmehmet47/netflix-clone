@@ -18,7 +18,7 @@ export default function MovieModal({
   setModalVisibility,
   movieSelected,
 }: Props) {
-  const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${movieSelected.backdrop_path}`;
+  const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${movieSelected?.backdrop_path}`;
 
   console.log(movieSelected.backdrop_path);
 
