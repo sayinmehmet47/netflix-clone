@@ -10,6 +10,9 @@ import DropdownUser from "./components/dropdownUser";
 import Footer from "./components/footer";
 import { useSession } from "next-auth/react";
 import AccessDenied from "./components/AccessDenied";
+import { FaSpinner } from "react-icons/fa";
+import axios from "axios";
+
 const fetchRequest = {
   netflixOriginalsFetch: `/discover/tv?api_key=32d0c559d4f922d14ea1f7f066e100a4&with_networks=213`,
   trendingFetch: `/trending/all/week?api_key=32d0c559d4f922d14ea1f7f066e100a4&language=en-US`,
@@ -28,19 +31,24 @@ interface MoviesProps {
 }
 export default function Browse({ movies }: MoviesProps): React.ReactElement {
   const { poster_path, original_title, overview } = movies;
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [offset, setOffset] = useState(0);
   const { data: session, status } = useSession();
   const loading = status === "loading";
   const firstLine = overview.split(".")[0];
-  const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
 
-  const handleScroll = (e) => {
-    const offset = window.pageYOffset;
-    offset > 100 ? setIsScrolled(true) : setIsScrolled(false);
-  };
+  const path = `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${poster_path}`;
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (loading) {
+    return <FaSpinner className="mx-auto w-20 h-20 mt-32" />;
+  }
   if (!session) {
     return <AccessDenied />;
   }
@@ -52,7 +60,7 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
       >
         <nav
           className={`grid fixed z-50 w-full grid-cols-2 py-2   text-white transition-all duration-200   ${
-            isScrolled ? "bg-black/80" : "bg-transparent"
+            offset > 10 ? "bg-black/80" : "bg-transparent"
           }`}
         >
           <div className="flex  col-span-full ">
@@ -108,31 +116,31 @@ export default function Browse({ movies }: MoviesProps): React.ReactElement {
 
       <CarouselComponent
         name="Netflix Originals"
-        fetchUrl={fetchRequest.trendingFetch}
+        fetchUrl={fetchRequest?.trendingFetch}
         width={160}
         height={210}
       />
       <CarouselComponent
         name="Trending Now"
-        fetchUrl={fetchRequest.topRatedFetch}
+        fetchUrl={fetchRequest?.topRatedFetch}
         width={160}
         height={210}
       />
       <CarouselComponent
         name="Comedies"
-        fetchUrl={fetchRequest.comedyMovieFetch}
+        fetchUrl={fetchRequest?.comedyMovieFetch}
         width={160}
         height={210}
       />
       <CarouselComponent
         name="Actions"
-        fetchUrl={fetchRequest.actionMovieFetch}
+        fetchUrl={fetchRequest?.actionMovieFetch}
         width={160}
         height={210}
       />
       <CarouselComponent
         name="Horror"
-        fetchUrl={fetchRequest.horrorMovieFetch}
+        fetchUrl={fetchRequest?.horrorMovieFetch}
         width={160}
         height={210}
       />

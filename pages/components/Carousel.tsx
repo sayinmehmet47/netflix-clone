@@ -1,5 +1,4 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
 
 import React, {
   FunctionComponent,
@@ -11,6 +10,8 @@ import React, {
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
+import Link from "next/link";
+import MovieModal from "./MovieModal/MovieModal";
 const base_url = "https://www.themoviedb.org/t/p/w220_and_h330_face//";
 
 type Props = {
@@ -27,13 +28,24 @@ const CarouselComponent: FunctionComponent<Props> = ({
   height,
 }) => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [movieSelected, setMovieSelection] = useState();
+
+  const handleClick = (movie) => {
+    setModalVisibility(true);
+    setMovieSelection(movie);
+  };
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
+
       const response = await axios.get(
         `https://api.themoviedb.org/3${fetchUrl}`
       );
       setMovies(response.data.results);
+      setLoading(false);
     }
     fetchData();
   }, [fetchUrl]);
@@ -65,23 +77,41 @@ const CarouselComponent: FunctionComponent<Props> = ({
     <div className="bg-black text-white">
       <h1 className="text-3xl py-5 px-10 ">{name}</h1>
 
-      <Carousel responsive={responsive} className="w-full ">
-        {movies.map((e) => {
-          return (
-            <div key={e.id} className="cursor-pointer">
-              <div className="hover:scale-125">
-                <Image
-                  className="rounded shadow-xl "
-                  width={width}
-                  height={height}
-                  alt="fd"
-                  src={`${base_url}${e.poster_path}`}
-                />
+      <Carousel
+        customTransition="all .5s ease-in-out"
+        transitionDuration={500}
+        swipeable
+        draggable
+        responsive={responsive}
+        className="w-full "
+      >
+        {!loading ? (
+          movies.map((e, index) => {
+            return (
+              <div key={index} className="cursor-pointer">
+                <div>
+                  <Image
+                    onClick={() => handleClick(e)}
+                    className="rounded shadow-xl"
+                    width={width}
+                    height={height}
+                    alt="fd"
+                    src={`${base_url}${e.poster_path}`}
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </Carousel>
+      {modalVisibility && (
+        <MovieModal
+          movieSelected={movieSelected}
+          setModalVisibility={setModalVisibility}
+        />
+      )}
     </div>
   );
 };
