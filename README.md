@@ -35,6 +35,10 @@ For fetching movie data
 
 ![image](https://user-images.githubusercontent.com/75525090/148641025-6c485d0d-c07a-42d1-997d-9ee0a216ddd4.png)
 
+# Modal
+
+![image](https://user-images.githubusercontent.com/75525090/151202480-c1b32935-4dd2-4e51-9d96-ff7a54e2de87.png)
+
 # Footer and Categories
 
 ![image](https://user-images.githubusercontent.com/75525090/148641039-1414b45a-ff89-443b-a5ea-ab615328637c.png)

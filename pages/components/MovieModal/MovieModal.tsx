@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MovieModal.module.css";
+import {
+  AiFillCloseCircle,
+  AiOutlineLike,
+  AiOutlineDislike,
+} from "react-icons/ai";
+import { GrAddCircle } from "react-icons/gr";
+import { FiPlayCircle } from "react-icons/fi";
+import { MdAddCircle } from "react-icons/md";
 import Image from "next/image";
 type Props = {
   setModalVisibility: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,7 +34,7 @@ export default function MovieModal({
     );
   }, [movieSelected]);
 
-  console.log(path);
+  console.log(movieSelected);
 
   return (
     <div
@@ -43,22 +51,32 @@ export default function MovieModal({
         />
       )}
 
-      <h1>{path}</h1>
-      <button onClick={() => setModalVisibility(false)}>close</button>
+      {/* <h1>{path}</h1> */}
+      <button
+        className="fixed top-2 right-3"
+        onClick={() => setModalVisibility(false)}
+      >
+        <AiFillCloseCircle className="text-3xl " />
+      </button>
 
-      <h1>fdsfkl</h1>
-
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
-      <h1>fdsfkl</h1>
+      <div className=" flex relative bottom-12 left-2">
+        <button className="bg-white px-5 rounded py-1 mx-1">
+          <FiPlayCircle className="md:text-3xl text-black" />
+        </button>
+        <MdAddCircle className="md:text-3xl mx-1" />
+        <AiOutlineLike className="md:text-3xl mx-1" />
+        <AiOutlineDislike className="md:text-3xl mx-1" />
+      </div>
+      <div className="relative bottom-8 mx-5">
+        <h1 className="text-green-500 text-2xl font-bold">
+          {movieSelected.vote_average}
+          <span className="text-lg text-white ml-2">
+            {" "}
+            {movieSelected.title}
+          </span>
+        </h1>
+        <h3 className="text-sm">{movieSelected.overview}</h3>
+      </div>
     </div>
   );
 }
