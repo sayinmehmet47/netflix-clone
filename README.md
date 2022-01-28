@@ -6,6 +6,7 @@
 - To store the authenticated users, I used PostgreSQL
 - Browse route is protected.So you have to signIn to see it
 - User can authenticate with google,email and github by the help of NextAuth providers
+- Carousel also clickable, then open a modal to show details of movie
 - Jest is used to test some components
 
 # Technologies Used
