@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import styles from "./MovieModal.module.css";
+import React, { useEffect, useState } from 'react';
+import styles from './MovieModal.module.css';
 import {
   AiFillCloseCircle,
   AiOutlineLike,
   AiOutlineDislike,
-} from "react-icons/ai";
-import { GrAddCircle } from "react-icons/gr";
-import { FiPlayCircle } from "react-icons/fi";
-import { MdAddCircle } from "react-icons/md";
-import Image from "next/image";
+} from 'react-icons/ai';
+import { GrAddCircle } from 'react-icons/gr';
+import { FiPlayCircle } from 'react-icons/fi';
+import { MdAddCircle } from 'react-icons/md';
+import Image from 'next/image';
 type Props = {
   setModalVisibility: React.Dispatch<React.SetStateAction<boolean>>;
   movieSelected: {
@@ -26,15 +26,13 @@ export default function MovieModal({
   setModalVisibility,
   movieSelected,
 }: Props) {
-  const [path, setPath] = useState("");
+  const [path, setPath] = useState('');
 
   useEffect(() => {
     setPath(
       `https://www.themoviedb.org/t/p/w1280_and_h720_multi_faces/${movieSelected?.backdrop_path}`
     );
   }, [movieSelected]);
-
-  console.log(movieSelected);
 
   return (
     <div
@@ -71,7 +69,7 @@ export default function MovieModal({
         <h1 className="text-green-500 text-2xl font-bold">
           {movieSelected?.vote_average}
           <span className="text-lg text-white ml-2">
-            {" "}
+            {' '}
             {movieSelected?.title}
           </span>
         </h1>
