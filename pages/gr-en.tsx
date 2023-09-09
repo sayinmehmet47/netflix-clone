@@ -19,7 +19,6 @@ export default function Home() {
     e.preventDefault();
     signIn('email', { email });
   };
-  // console.log(feed.filter((e) => e.userId === data?.user.id));
   // console.log(data?.user.id);
   return (
     <div>
