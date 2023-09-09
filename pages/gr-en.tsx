@@ -1,24 +1,23 @@
-import Header from "./components/header";
-import { signIn, useSession } from "next-auth/react";
-import prisma from "../lib/prisma";
-import { GetServerSideProps } from "next";
-import Navbar from "./components/navbar";
-import Image from "next/image";
-import Tv from "../public/images/tv.png";
-import mobile from "../public/images/mobile.jpg";
-import devicePile from "../public/images/devicePile.png";
-import kids from "../public/images/kids.png";
-import Dropdown from "./components/dropdown";
-import Footer from "./components/footer";
-import { useState } from "react";
+import Header from './components/header';
+import { signIn, useSession } from 'next-auth/react';
+import prisma from '../lib/prisma';
+import { GetServerSideProps } from 'next';
+import Navbar from './components/navbar';
+import Image from 'next/image';
+import Tv from '../public/images/tv.png';
+import mobile from '../public/images/mobile.jpg';
+import devicePile from '../public/images/devicePile.png';
+import kids from '../public/images/kids.png';
+import Dropdown from './components/dropdown';
+import Footer from './components/footer';
+import { useState } from 'react';
 
 export default function Home() {
   const [email, setEmail] = useState<any | null>(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
-    signIn("email", { email });
+    signIn('email', { email });
   };
   // console.log(feed.filter((e) => e.userId === data?.user.id));
   // console.log(data?.user.id);
@@ -50,7 +49,7 @@ export default function Home() {
                     className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                     placeholder="Email Adress"
                     onChange={(e) => setEmail(e.target.value)}
-                    type={"email"}
+                    type={'email'}
                   />
                   <button
                     type="submit"
@@ -176,7 +175,7 @@ export default function Home() {
                 className="md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white md:w-8/12 w-10/12 p-2"
                 placeholder="Email Adress"
                 onChange={(e) => setEmail(e.target.value)}
-                type={"email"}
+                type={'email'}
               />
               <button className="md:px-10  bg-red-600  text-white font-bold md:p-4 uppercase mt-4 p-2 ">
                 Get Started

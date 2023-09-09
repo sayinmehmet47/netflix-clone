@@ -27,6 +27,9 @@
     "superjson": "^1.8.0",
     "ts-node": "^10.4.0"
   },
+  "engines": {
+    "node": ">=10.13.0"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
