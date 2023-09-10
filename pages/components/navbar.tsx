@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Navbar() {
   return (
@@ -43,7 +43,7 @@ export default function Navbar() {
             </svg>
           </div>
           <a href={`/login`}>
-            {" "}
+            {' '}
             <button className="text-white bg-red-600 px-5 py-1 rounded text-md">
               Sign In
             </button>

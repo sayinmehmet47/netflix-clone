@@ -11,6 +11,7 @@ import kids from '../public/images/kids.png';
 import Dropdown from './components/dropdown';
 import Footer from './components/footer';
 import { useState } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
   const [email, setEmail] = useState<any | null>(null);
@@ -19,9 +20,15 @@ export default function Home() {
     e.preventDefault();
     signIn('email', { email });
   };
-  // console.log(data?.user.id);
+
   return (
     <div>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="tsIPr7tuwtFUuym9hEuBkGYAe7oZzebwImKTiSXFH0Q"
+        />
+      </Head>
       <div
         role="heading"
         aria-level={1}
